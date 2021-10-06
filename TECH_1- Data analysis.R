@@ -1,5 +1,5 @@
 
-# REGRESSION ANALYSIS (RAW VERSION) #
+# REGRESSION ANALYSIS  #
 
 # Loading packages and establishing working directory 
 library(dplyr)
