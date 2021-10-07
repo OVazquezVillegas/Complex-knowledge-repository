@@ -13,8 +13,7 @@ library(moments)
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
-
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 TECH_DATA <- read.table("OCEAN_1.txt", sep = "")
 
 
