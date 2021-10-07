@@ -1,0 +1,12 @@
+Source: IEA World Energy Balances 2020 https://www.iea.org/subscribe-to-data-services/world-energy-balances-and-statistics
+Documentation: https://iea.blob.core.windows.net/assets/4f314df4-8c60-4e48-9f36-bfea3d2b7fd5/WorldBAL_2020_Documentation.pdf
+This data is subject to the IEA's terms and conditions: https://www.iea.org/terms
+
+,Coal,Natural gas,Nuclear,Hydro,Biofuels and waste,Oil,"Wind, solar, etc.",Units
+1990,5318,2183,5007,934,4564,9461,,ktoe
+1995,6053,2839,5007,1111,5020,8165,1,ktoe
+2000,5104,3430,5857,1261,6549,9088,7,ktoe
+2005,4914,3607,6063,1185,6992,10064,15,ktoe
+2010,6878,3837,5941,1111,8353,9450,27,ktoe
+2015,4089,2236,6057,1442,9084,7743,203,ktoe
+2019,3627,2093,6223,1070,10264,8222,532,ktoe

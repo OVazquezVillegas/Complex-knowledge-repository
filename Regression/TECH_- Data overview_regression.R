@@ -7,15 +7,18 @@ library(dplyr)
 library(MASS)
 library(car)
 library(moments)
+library(HH)
+
+
 
 # ----------------TECH 1 # ----------------------------------------------------------
 
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
-TECH_DATA <- read.table("OCEAN_1.txt", sep = "")
+TECH_DATA <- read.table("PV_1.txt", sep = "")
 
 
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
@@ -60,7 +63,6 @@ par(mfrow=c(2,2))
 plot(TECH_DATA$KNI, TECH_DATA$GDP) #no rel (nat)
 plot(TECH_DATA$KNI, TECH_DATA$P) #log
 plot(TECH_DATA$KNI, TECH_DATA$M) #no rel (nat)
-
 
 
 ##### MODELS

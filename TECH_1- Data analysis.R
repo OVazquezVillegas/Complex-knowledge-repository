@@ -26,8 +26,8 @@ library(splitstackshape)
 # 1. KNOWLEDGE COMPLEXITY #
 
 # 1.1 Load files
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/NUTS counts")
-tech <- read.delim("PV_1.txt")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/NUTS counts")
+tech <- read.delim("GEO.txt")
 
 # counts
 sum(tech$counts)
@@ -51,33 +51,54 @@ mat <- get.matrix(tech)
 RCA <- location.quotient(mat, binary = TRUE)
 
 
-# 1.3 Compute average ubiquity (kr1 )
+# 1.3 Compute average diversity (kr0)
+div <- MORc(mat, RCA = T, steps = 0)
+div <- cbind(nuts, div)
+div <- as.data.frame(div)
+str(div)
+div$div = as.numeric(div$div)
+
+
+# 1.3 Compute average ubiquity (kr0 ) - did not changed
 avg_ubiq <- MORc(mat, RCA = T, steps = 1)
 nuts <- rownames(mat)
 avg_ubiq <- cbind(nuts, avg_ubiq)
 avg_ubiq <- as.data.frame(avg_ubiq)
+str(avg_ubiq)
+avg_ubiq$avg_ubiq = as.numeric(avg_ubiq$avg_ubiq)
 
-# 1.3 Compute average diversity (kr2 )
-avg_div <- MORc(mat, RCA = T, steps = 2)
-avg_div <- cbind(nuts, avg_div)
-avg_div <- as.data.frame(avg_div)
+
 
 # 1.3 Compute ratio diversity/ubiquity
-KNI <- cbind(avg_div$avg_div, avg_ubiq$avg_ubiq)
+KNI <- cbind(div$div, avg_ubiq$avg_ubiq)
 KNI <- cbind(nuts,KNI)
 KNI <- as.data.frame(KNI)
+colnames(KNI) <- c("nuts2", "Div", "Avg ubiq")
 
-colnames(KNI) <- c("nuts2", "Avg div", "Avg ubiq")
-KNI$`Avg div` <- as.numeric(KNI$`Avg div`)
+str(KNI)
+KNI$`Div` <- as.numeric(KNI$`Div`)
 KNI$`Avg ubiq`<- as.numeric(KNI$`Avg ubiq`)
-KNI$KNI <- KNI$`Avg div`/KNI$`Avg ubiq`
+KNI$KNI <- KNI$`Div`/KNI$`Avg ubiq`
 
 KNI <- KNI[,c(1,4)]
 
 
 KNI <- inner_join(NUTS_country, KNI, by = "nuts2")
 
-KNI <- unique(KNI) # 135 obs
+KNI <- unique(KNI) #
+
+
+
+# test zone
+
+str(KNI)
+str(tech)
+str(avg_div)
+str(avg_ubiq)
+
+test = MORt(mat, RCA = T, steps = 0)
+test = as.data.frame(test)
+
 
 
 
@@ -137,7 +158,7 @@ Knowledge <- unique(Knowledge)
 
 
 # 4. CARBON LOCK-IN: SHARE OF GWH  #
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data/Carbon lock-in")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Carbon lock-in")
 CARBON <- read.delim("CARBON_1_share.txt", sep = "")
 CARBON <- inner_join(CARBON, NUTS_country, by = "Country")
 CARBON <- unique(CARBON)
@@ -170,7 +191,7 @@ rd_added <- RCA_inv * rd_added #adding the RD added to regions that are not spec
 # Determine the number of co-inventors ties a region has with each region and 
 # multiply with the RD added of each region 
 
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data/Interregional/Data")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Interregional/Data")
 inter <- read.delim("PV_1.txt", sep = "", header = T)
 
 g = graph.data.frame(inter,directed=F)
@@ -215,7 +236,7 @@ Links <- unique(Links)
 
 
 # CONTROL VARIABLES # -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository")
 
 # 6. LEVEL OF ECONOMIC DEVELOPMENT: GDP PER CAPITA #
 GDP <- read.delim("GDP_1.txt", sep = "")
@@ -230,7 +251,7 @@ POP <- inner_join(POP, NUTS_country, by = "nuts2")
 POP <- unique(POP)
 
 # 8. RENEWABLE ENERGY TECHNOLOGY DEPLOYMENT: MW INSTALLED CAPACITY #
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data/Energy markets")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Energy markets")
 DEPLOYMENT <- read.delim("PV_1.txt", sep = "")
 colnames(DEPLOYMENT) <- c("Country", "DEPLOYMENT")
 DEPLOYMENT <- inner_join(DEPLOYMENT, NUTS_country, by = "Country")
@@ -245,7 +266,7 @@ colnames(TECH_DATA) <- c("Region", "KNI", "RD", "K", "C", "CL", "GDP", "P", "M")
 TECH_DATA <- unique(TECH_DATA)
 
 # SAVING FILE # -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 write.table(TECH_DATA, "PV_1.txt")
 
