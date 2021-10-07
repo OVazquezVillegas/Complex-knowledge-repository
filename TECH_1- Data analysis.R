@@ -27,7 +27,7 @@ library(splitstackshape)
 
 # 1.1 Load files
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/NUTS counts")
-tech <- read.delim("GEO.txt")
+tech <- read.delim("OCEAN_1.txt")
 
 # counts
 sum(tech$counts)
@@ -51,7 +51,7 @@ mat <- get.matrix(tech)
 RCA <- location.quotient(mat, binary = TRUE)
 
 
-# 1.3 Compute average diversity (kr0)
+# 1.3 Compute average diversity (change from kr2 to kr0)
 div <- MORc(mat, RCA = T, steps = 0)
 div <- cbind(nuts, div)
 div <- as.data.frame(div)
@@ -86,19 +86,6 @@ KNI <- KNI[,c(1,4)]
 KNI <- inner_join(NUTS_country, KNI, by = "nuts2")
 
 KNI <- unique(KNI) #
-
-
-
-# test zone
-
-str(KNI)
-str(tech)
-str(avg_div)
-str(avg_ubiq)
-
-test = MORt(mat, RCA = T, steps = 0)
-test = as.data.frame(test)
-
 
 
 
@@ -192,7 +179,7 @@ rd_added <- RCA_inv * rd_added #adding the RD added to regions that are not spec
 # multiply with the RD added of each region 
 
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Interregional/Data")
-inter <- read.delim("PV_1.txt", sep = "", header = T)
+inter <- read.delim("OCEAN_1.txt", sep = "", header = T)
 
 g = graph.data.frame(inter,directed=F)
 
@@ -252,7 +239,7 @@ POP <- unique(POP)
 
 # 8. RENEWABLE ENERGY TECHNOLOGY DEPLOYMENT: MW INSTALLED CAPACITY #
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Energy markets")
-DEPLOYMENT <- read.delim("PV_1.txt", sep = "")
+DEPLOYMENT <- read.delim("OCEAN_1.txt", sep = "")
 colnames(DEPLOYMENT) <- c("Country", "DEPLOYMENT")
 DEPLOYMENT <- inner_join(DEPLOYMENT, NUTS_country, by = "Country")
 DEPLOYMENT <- unique(DEPLOYMENT)
@@ -268,5 +255,5 @@ TECH_DATA <- unique(TECH_DATA)
 # SAVING FILE # -------------------------------------------------------
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
-write.table(TECH_DATA, "PV_1.txt")
+write.table(TECH_DATA, "OCEAN_1.txt")
 
