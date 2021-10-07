@@ -1,0 +1,3 @@
+SELECT *
+FROM customers_by_total_spent
+ORDER BY total_revenue_from_customer DESC
