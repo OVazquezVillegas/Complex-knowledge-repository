@@ -67,7 +67,7 @@ model_HYDRO_2 <- lm(TECH_DATA_SCALED$KNI ~ TECH_DATA_SCALED$RD + TECH_DATA_SCALE
                       TECH_DATA_SCALED$CL + TECH_DATA_SCALED$GDP + TECH_DATA_SCALED$P + TECH_DATA_SCALED$M)
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 TECH_DATA <- read.table("GEO_1.txt", sep = "")
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
@@ -92,7 +92,7 @@ model_GEO_1 <- lm(TECH_DATA_SCALED$KNI ~ TECH_DATA_SCALED$RD + TECH_DATA_SCALED$
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 TECH_DATA <- read.table("GEO_2.txt", sep = "")
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
@@ -225,7 +225,7 @@ model_WIND_2 <- lm(TECH_DATA_SCALED$KNI ~ TECH_DATA_SCALED$RD + TECH_DATA_SCALED
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 TECH_DATA <- read.table("THERMAL_1.txt", sep = "")
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
@@ -280,7 +280,7 @@ model_THERMAL_2 <- lm(TECH_DATA_SCALED$KNI ~ TECH_DATA_SCALED$RD + TECH_DATA_SCA
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 TECH_DATA <- read.table("OCEAN_1.txt", sep = "")
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
