@@ -27,7 +27,7 @@ library(splitstackshape)
 
 # 1.1 Load files
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/NUTS counts")
-tech <- read.delim("OCEAN_1.txt")
+tech <- read.delim("THERMAL_1.txt")
 
 # counts
 sum(tech$counts)
@@ -46,6 +46,8 @@ tech <- tech[,c(1,3:4)]
 
 # 1.2 Convert to incidence matrix
 mat <- get.matrix(tech)
+nuts <- rownames(mat)
+
 
 # 1.3 Compute the LQ with the 'binary' argument set to 'TRUE'
 RCA <- location.quotient(mat, binary = TRUE)
@@ -61,7 +63,6 @@ div$div = as.numeric(div$div)
 
 # 1.3 Compute average ubiquity (kr0 ) - did not changed
 avg_ubiq <- MORc(mat, RCA = T, steps = 1)
-nuts <- rownames(mat)
 avg_ubiq <- cbind(nuts, avg_ubiq)
 avg_ubiq <- as.data.frame(avg_ubiq)
 str(avg_ubiq)
@@ -179,7 +180,7 @@ rd_added <- RCA_inv * rd_added #adding the RD added to regions that are not spec
 # multiply with the RD added of each region 
 
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Interregional/Data")
-inter <- read.delim("OCEAN_1.txt", sep = "", header = T)
+inter <- read.delim("THERMAL_1.txt", sep = "", header = T)
 
 g = graph.data.frame(inter,directed=F)
 
@@ -239,7 +240,7 @@ POP <- unique(POP)
 
 # 8. RENEWABLE ENERGY TECHNOLOGY DEPLOYMENT: MW INSTALLED CAPACITY #
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Data/Energy markets")
-DEPLOYMENT <- read.delim("OCEAN_1.txt", sep = "")
+DEPLOYMENT <- read.delim("THERMAL_1.txt", sep = "")
 colnames(DEPLOYMENT) <- c("Country", "DEPLOYMENT")
 DEPLOYMENT <- inner_join(DEPLOYMENT, NUTS_country, by = "Country")
 DEPLOYMENT <- unique(DEPLOYMENT)
@@ -255,5 +256,5 @@ TECH_DATA <- unique(TECH_DATA)
 # SAVING FILE # -------------------------------------------------------
 setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
-write.table(TECH_DATA, "OCEAN_1.txt")
+write.table(TECH_DATA, "THERMAL_1.txt")
 

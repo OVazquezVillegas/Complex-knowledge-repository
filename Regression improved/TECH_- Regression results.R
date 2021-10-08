@@ -38,7 +38,7 @@ model_HYDRO_1 <- lm(TECH_DATA_SCALED$KNI ~ TECH_DATA_SCALED$RD + TECH_DATA_SCALE
                     TECH_DATA_SCALED$CL + TECH_DATA_SCALED$GDP + TECH_DATA_SCALED$P + TECH_DATA_SCALED$M)
 
 
-
+print(model_HYDRO_1)
 
 # REGRESION ANALYSIS# -------------------------------------------------------
 setwd("~/OneDrive - UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO/MSc Innovation Sciences/Thesis/Data analysis/Regression")
@@ -56,7 +56,7 @@ DATA$P <- log(DATA$P)
 DATA$M <- log(DATA$M +1)
 
 
-# STANDARIZATION 
+# STANDARIZATION #
 TECH_DATA_SCALED <- scale(DATA)
 TECH_DATA_SCALED <- as.data.frame(TECH_DATA_SCALED)
 TECH_DATA_SCALED <- cbind(TECH_DATA$Region,  TECH_DATA_SCALED)
