@@ -11,7 +11,7 @@ library(stargazer)
 
 
 # REGRESION ANALYSIS# -------------------------------------------------------
-setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regresion improved")
+setwd("C:/Users/6674828/OneDrive - Universiteit Utrecht/Thesis-research paper/Complex-knowledge-repository/Regression improved")
 
 TECH_DATA <- read.table("HYDRO_1.txt", sep = "")
 TECH_DATA[2:9] <- lapply(TECH_DATA[2:9], as.numeric)
